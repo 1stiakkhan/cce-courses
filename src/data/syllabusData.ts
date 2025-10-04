@@ -221,178 +221,325 @@ export const syllabusData: Course[] = [
   },
   {
     id: "3",
-    code: "MATH-1107",
-    title: "Differential and Integral Calculus",
+    code: "CCE-1105",
+    title: "Computer Fundamentals and Programming",
     creditHours: 3,
     contactHours: "3 CH per Week",
+    prerequisite: "",
     objectives: [
-      "Understand fundamental concepts of calculus",
-      "Apply differentiation and integration techniques",
-      "Solve real-world engineering problems using calculus"
+      "Recognize and understand the purpose of basic computer components",
+      "Understand the concept of program, variable, constant, loop, array, function, structure, pointer and file",
+      "Understand the parts of a computer system and how they interact",
+      "Understand the concept of a program in a high-level language being translated by a compiler into machine language program and then executed"
     ],
     outcomes: [
       {
         clo: "CLO1",
-        description: "Apply knowledge of mathematics in engineering problems",
+        description: "Define the components of a computer system including the basic terminology used in computer programming",
         plo: "PLO1",
-        bloomsLevel: "Cognitive/Apply"
+        bloomsLevel: "Cognitive"
       },
       {
         clo: "CLO2",
-        description: "Identify and solve complex engineering problems",
-        plo: "PLO2",
-        bloomsLevel: "Cognitive/Apply"
-      }
-    ],
-    content: [
-      { chapter: "1-2", topic: "Functions, limits, continuity, derivatives", lectures: 12, clo: "CLO1" },
-      { chapter: "3-4", topic: "Applications of derivatives, curve sketching", lectures: 10, clo: "CLO2" },
-      { chapter: "5-6", topic: "Integration techniques and applications", lectures: 13, clo: "CLO1" }
-    ],
-    textBooks: [
-      "Thomas' Calculus by George B. Thomas, Pearson",
-      "Calculus: Early Transcendentals by James Stewart"
-    ],
-    assessment: {
-      attendance: 10,
-      classTest: 10,
-      midterm: 30,
-      final: 50
-    }
-  },
-  {
-    id: "4",
-    code: "PHY-1108",
-    title: "Physics I (Electricity and Magnetism)",
-    creditHours: 3,
-    contactHours: "3 CH per Week",
-    objectives: [
-      "Understand fundamental principles of electricity and magnetism",
-      "Apply physical concepts to solve engineering problems",
-      "Develop experimental and analytical skills"
-    ],
-    outcomes: [
-      {
-        clo: "CLO1",
-        description: "Apply knowledge of physics in solving engineering problems",
+        description: "Demonstrate C language by writing, compiling and debugging programs with the use of different data types, variables, constants and numerous input/output functions",
         plo: "PLO1",
-        bloomsLevel: "Cognitive/Apply"
-      },
-      {
-        clo: "CLO2",
-        description: "Identify complex engineering problems using physics principles",
-        plo: "PLO2",
-        bloomsLevel: "Cognitive/Analyze"
-      }
-    ],
-    content: [
-      { chapter: "1-3", topic: "Electric charge, field, and potential", lectures: 12, clo: "CLO1" },
-      { chapter: "4-5", topic: "Capacitance, current, and resistance", lectures: 10, clo: "CLO1" },
-      { chapter: "6-8", topic: "Magnetic fields and electromagnetic induction", lectures: 13, clo: "CLO2" }
-    ],
-    textBooks: [
-      "Physics for Scientists and Engineers by Serway & Jewett",
-      "University Physics by Young & Freedman"
-    ],
-    assessment: {
-      attendance: 10,
-      classTest: 10,
-      midterm: 30,
-      final: 50
-    }
-  },
-  {
-    id: "5",
-    code: "CSE-1109",
-    title: "Structured Programming Language",
-    creditHours: 3,
-    contactHours: "3 CH per Week",
-    objectives: [
-      "Understand programming fundamentals and C language",
-      "Develop problem-solving skills through coding",
-      "Master data structures and algorithms"
-    ],
-    outcomes: [
-      {
-        clo: "CLO1",
-        description: "Apply programming knowledge to solve engineering problems",
-        plo: "PLO1",
-        bloomsLevel: "Cognitive/Apply"
-      },
-      {
-        clo: "CLO2",
-        description: "Design solutions for complex problems using programming",
-        plo: "PLO3",
-        bloomsLevel: "Cognitive/Create"
+        bloomsLevel: "Cognitive"
       },
       {
         clo: "CLO3",
-        description: "Implement and debug programs effectively",
-        plo: "PLO5",
-        bloomsLevel: "Cognitive/Apply"
+        description: "Apply control statements, functions, structures, unions, arrays and pointers of C language to solve real world problems",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive"
+      },
+      {
+        clo: "CLO4",
+        description: "Adapt the concept of file handling to manipulate file data",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive"
       }
     ],
     content: [
-      { chapter: "1-3", topic: "Introduction to C, variables, operators, control structures", lectures: 10, clo: "CLO1" },
-      { chapter: "4-6", topic: "Arrays, functions, pointers", lectures: 12, clo: "CLO2" },
-      { chapter: "7-8", topic: "Structures, file handling, algorithms", lectures: 13, clo: "CLO3" }
+      { chapter: "1", topic: "Computer Organization: Introduction to Computer and its Types", section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Computer Components: CPU, Memory, Hardware and Software", lectures: 1, section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Introduction to C program: History and Features of C", lectures: 1, section: "Midterm", clo: "CLO2" },
+      { chapter: "2", topic: "Steps in C Program execution", section: "Midterm", clo: "CLO2" },
+      { chapter: "2", topic: "Variables, Constants, Data Types and Keywords", lectures: 2, section: "Midterm", clo: "CLO2" },
+      { chapter: "2", topic: "Operators, Comments and Escape Sequence", lectures: 3, section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Program Control Statements: if, if-else and nested if", lectures: 1, section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "If-else-if ladder and Switch", lectures: 1, section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Loops (for, while, do-while)", lectures: 3, section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Jump Statement (break, continue, and go to)", lectures: 1, section: "Midterm", clo: "CLO2" },
+      { chapter: "4", topic: "User-defined Functions and aspects of function calling", lectures: 2, section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "Call by value and Call by reference in C", lectures: 1, section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "Recursion in C, Storage Classes in C", lectures: 1, section: "Final", clo: "CLO3" },
+      { chapter: "5", topic: "Arrays: Introduction to Array and Two-Dimensional Array", lectures: 2, section: "Final", clo: "CLO3" },
+      { chapter: "5", topic: "Passing Array to Function in C, String handling in C", lectures: 3, section: "Final", clo: "CLO3" },
+      { chapter: "6", topic: "Structures and Unions: Introduction to Structures", lectures: 1, section: "Final", clo: "CLO3" },
+      { chapter: "6", topic: "Array of Structures and Nested Structure in C", lectures: 2, section: "Final", clo: "CLO3" },
+      { chapter: "6", topic: "Union", lectures: 1, section: "Final", clo: "CLO3" },
+      { chapter: "7", topic: "Pointers: Introduction to Pointers", lectures: 1, section: "Final", clo: "CLO3" },
+      { chapter: "7", topic: "Pointers and arrays, Pointers and functions", lectures: 2, section: "Final", clo: "CLO3" },
+      { chapter: "8", topic: "File Management: Introduction and File Operations", lectures: 2, section: "Final", clo: "CLO4" },
+      { chapter: "8", topic: "Library functions for File", lectures: 1, section: "Final", clo: "CLO4" },
+      { chapter: "8", topic: "Dynamic memory allocation in C", lectures: 1, section: "Final", clo: "CLO4" },
+      { chapter: "8", topic: "Command Line Arguments and Pre-processors", lectures: 1, section: "Final", clo: "CLO4" }
     ],
     textBooks: [
-      "The C Programming Language by Kernighan & Ritchie",
-      "Programming in ANSI C by E. Balagurusamy"
+      "Balagurusamy, E, 'Programming in ANSI C', 6th ed. Tata McGraw-Hill, Delhi, 2012",
+      "Herbert Schildt, 'C: The Complete Reference' Osborne McGraw-Hill Company Inc, 2000",
+      "Byron S. Gottfried, 'Theory and Problems of Programming with C' 3rd ed., McGraw-Hill Company Inc, 1996"
     ],
     assessment: {
       attendance: 10,
       classTest: 10,
       midterm: 30,
       final: 50
-    }
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Questions and Answers",
+      "Tutorial",
+      "Discussions",
+      "Power point Presentation"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Class test",
+      "Quizzes/Assignment on problem solution",
+      "Mid-Term & Semester End Examination",
+      "Project evaluation & Viva"
+    ]
   },
   {
-    id: "6",
-    code: "EEE-1110",
-    title: "Basic Electrical Engineering",
-    creditHours: 3,
+    id: "4",
+    code: "CCE-1106",
+    title: "Computer Fundamentals and Programming Sessional",
+    creditHours: 1.5,
     contactHours: "3 CH per Week",
+    prerequisite: "",
     objectives: [
-      "Understand basic electrical circuits and components",
-      "Analyze AC and DC circuits",
-      "Apply electrical principles to engineering applications"
+      "Recognize and understand the purpose of basic computer components",
+      "Understand the concept of variable, constant, loop, array, function, structure, pointer and file",
+      "Understand the parts of a computer system and how they interact",
+      "Understand the concept of a program in a high-level language being translated by a compiler into machine language program and then executed"
     ],
     outcomes: [
       {
         clo: "CLO1",
-        description: "Apply electrical engineering knowledge to solve problems",
+        description: "Write, compile and execute C programs based on simple constructs like arrays, loops, structures, conditional statements etc",
         plo: "PLO1",
-        bloomsLevel: "Cognitive/Apply"
+        bloomsLevel: "Cognitive/Psychomotor/Affective"
       },
       {
         clo: "CLO2",
-        description: "Analyze and design basic electrical circuits",
-        plo: "PLO3",
-        bloomsLevel: "Cognitive/Analyze"
+        description: "Apply the concepts of pointer and functions to solve problems",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive/Psychomotor/Affective"
+      },
+      {
+        clo: "CLO3",
+        description: "Demonstrate the use of file handling operations",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive/Psychomotor/Affective"
+      },
+      {
+        clo: "CLO4",
+        description: "Develop simple C program for standard applications",
+        plo: "PLO7",
+        bloomsLevel: "Affective"
       }
     ],
     content: [
-      { chapter: "1-3", topic: "DC circuits, Ohm's law, network theorems", lectures: 12, clo: "CLO1" },
-      { chapter: "4-5", topic: "AC circuits, phasors, power", lectures: 10, clo: "CLO1" },
-      { chapter: "6-7", topic: "Transformers, motors, generators", lectures: 13, clo: "CLO2" }
+      { chapter: "1", topic: "Introduction to C programming", lectures: 2, clo: "CLO1" },
+      { chapter: "2", topic: "Data types and expressions", lectures: 1, clo: "CLO2" },
+      { chapter: "3", topic: "Operators", lectures: 1, clo: "CLO1" },
+      { chapter: "4", topic: "Decision making and Branching (if-else, nested if-else)", lectures: 1, clo: "CLO1" },
+      { chapter: "5", topic: "Decision making and Branching (if-else-if ladder and switch)", lectures: 1, clo: "CLO1" },
+      { chapter: "6", topic: "Looping (for, while, do-while)", lectures: 2, clo: "CLO3" },
+      { chapter: "7", topic: "Arrays (one-dimensional and two-dimensional)", lectures: 2, clo: "CLO1" },
+      { chapter: "8", topic: "String handling", lectures: 1, clo: "CLO3" },
+      { chapter: "9", topic: "User-defined Functions", lectures: 2, clo: "CLO2" },
+      { chapter: "10", topic: "Recursion", lectures: 1, clo: "CLO2" },
+      { chapter: "11", topic: "Structures and Unions", lectures: 1, clo: "CLO3" },
+      { chapter: "12", topic: "Pointers", lectures: 2, clo: "CLO2" },
+      { chapter: "13", topic: "File handling", lectures: 1, clo: "CLO3" },
+      { chapter: "14", topic: "Dynamic memory allocation", lectures: 1, clo: "CLO4" }
     ],
     textBooks: [
-      "Basic Electrical Engineering by D.C. Kulshreshtha",
-      "Electrical Circuit Theory and Technology by John Bird"
+      "Balagurusamy, E, 'Programming in ANSI C', 6th ed. Tata McGraw-Hill, Delhi, 2012",
+      "Herbert Schildt, 'C: The Complete Reference' Osborne McGraw-Hill Company Inc, 2000",
+      "Byron S. Gottfried, 'Theory and Problems of Programming with C' 3rd ed., McGraw-Hill Company Inc, 1996"
+    ],
+    assessment: {
+      attendance: 10,
+      classTest: 20,
+      midterm: 30,
+      final: 40
+    },
+    deliveryMethods: [
+      "Lecture",
+      "Practical Demonstration",
+      "Lab Work",
+      "Data Collection",
+      "Data Analysis",
+      "Report Writing"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Assignment",
+      "Lab Report",
+      "Quizzes",
+      "Lab Exams (Mid & Final)",
+      "Viva"
+    ]
+  },
+  {
+    id: "5",
+    code: "CCE-1103",
+    title: "Basic Electrical Engineering",
+    creditHours: 3,
+    contactHours: "3 CH per Week",
+    prerequisite: "",
+    objectives: [
+      "Students gain fundamental ideas of DC electrical circuits, magnetic circuit, ohm's law, KVL, KCL",
+      "Gain basic ideas about series and parallel circuits, equivalent resistance of complex circuits",
+      "Comprehend and Apply various types of circuit theorems",
+      "Gain basic idea of R-C and R-L and RLC circuits with DC excitation"
+    ],
+    outcomes: [
+      {
+        clo: "CLO1",
+        description: "Understand the concepts of basic Circuit element, basic circuit, and basic circuit Laws and magnetic circuit laws",
+        plo: "PLO1",
+        bloomsLevel: "Cognitive/Understand"
+      },
+      {
+        clo: "CLO2",
+        description: "Introduce series parallel circuit and different network theorem to analysis the circuits",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive/Understand/Analysis"
+      }
+    ],
+    content: [
+      { chapter: "1", topic: "Circuit variables and elements: Voltage, Current, Power, Energy", lectures: 4, section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Independent and Dependent Sources, Resistance", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Basic laws: Ohm's law, Kirchhoff's current and Voltage laws", lectures: 4, section: "Midterm", clo: "CLO1" },
+      { chapter: "3", topic: "Simple resistive circuits: Series and parallel circuits, Voltage and current division", lectures: 4, section: "Midterm", clo: "CLO2" },
+      { chapter: "4", topic: "Wye-delta transformation: Necessity, Application, Delta to Wye and Wye to Delta Conversion", lectures: 3, section: "Midterm", clo: "CLO2" },
+      { chapter: "5", topic: "Techniques of circuit analysis: Branch current analysis, Nodal and mesh analysis including super node and super mesh", lectures: 3, section: "Final", clo: "CLO2" },
+      { chapter: "6", topic: "Network theorems: Source transformation, Thevenin's and Norton's theorem, Superposition theorems", lectures: 4, section: "Final", clo: "CLO2" },
+      { chapter: "6", topic: "Maximum power transfer condition and reciprocity theorem", section: "Final", clo: "CLO2" },
+      { chapter: "7", topic: "Energy storage elements: Inductors and capacitors, Series parallel combination", lectures: 3, section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "Source free RC and RL circuits, Step response of RC and RL circuits", lectures: 3, section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Magnetic Circuits: Flux, Permeability, reluctance, magnetic field strength, flux density", lectures: 2, section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Ohm's law and Ampere's circuital law in magnetic circuits", lectures: 1, section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Magnetic circuits: series, parallel and series parallel circuits", lectures: 1, section: "Final", clo: "CLO2" },
+      { chapter: "10", topic: "Second Order Circuit: Source free series and parallel RLC circuit", lectures: 3, section: "Final", clo: "CLO1" },
+      { chapter: "10", topic: "Step response of series and parallel RLC circuit", section: "Final", clo: "CLO1" }
+    ],
+    textBooks: [
+      "Robert L. Boylestad, 'Introductory Circuit Analysis', 11th ed. Pearson education international, USA, 2007",
+      "Charles K. Alexander and Matthew N. O. Sadiku, 'Fundamental of Electric Circuits', McGraw Hill, New York, 2009",
+      "L. Theraja and A. K. Theraja, 'A text book of Electrical Technology', Volume IV, 23th ed. Rajendra Ravindra Printers, India, 2007"
     ],
     assessment: {
       attendance: 10,
       classTest: 10,
       midterm: 30,
       final: 50
-    }
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Questions and Answers",
+      "Tutorial",
+      "Discussions",
+      "Power point Presentation"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Class test",
+      "Quizzes/Assignment on problem solution",
+      "Mid-Term & Semester End Examination",
+      "Project evaluation & Viva"
+    ]
+  },
+  {
+    id: "6",
+    code: "CCE-1104",
+    title: "Basic Electrical Engineering Sessional",
+    creditHours: 1.5,
+    contactHours: "3 CH per Week",
+    prerequisite: "",
+    objectives: [
+      "To introduce the typical lab equipment's used in the laboratory",
+      "To give general guideline about the safety precautions necessary",
+      "To verify different circuit laws and theorems",
+      "To become proficient with computer skills (PSpice) for the analysis and design of circuits"
+    ],
+    outcomes: [
+      {
+        clo: "CLO1",
+        description: "Introduce basic required component of electrical circuit",
+        plo: "PLO1",
+        bloomsLevel: "Cognitive/Understanding"
+      },
+      {
+        clo: "CLO2",
+        description: "Examine the different laws of basic circuit and theorem",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive/Understanding/Designing"
+      }
+    ],
+    content: [
+      { chapter: "1", topic: "Study of different electrical components and measuring instruments", lectures: 1, clo: "CLO1" },
+      { chapter: "2", topic: "Verification of Ohm's law", lectures: 1, clo: "CLO1" },
+      { chapter: "3", topic: "Verification of Kirchhoff's voltage and current laws", lectures: 1, clo: "CLO1" },
+      { chapter: "4", topic: "Study of series and parallel circuits", lectures: 1, clo: "CLO2" },
+      { chapter: "5", topic: "Voltage and current division", lectures: 1, clo: "CLO2" },
+      { chapter: "6", topic: "Wye-delta transformation", lectures: 1, clo: "CLO2" },
+      { chapter: "7", topic: "Verification of Thevenin's theorem", lectures: 1, clo: "CLO2" },
+      { chapter: "8", topic: "Verification of Norton's theorem", lectures: 1, clo: "CLO2" },
+      { chapter: "9", topic: "Verification of Superposition theorem", lectures: 1, clo: "CLO2" },
+      { chapter: "10", topic: "Maximum power transfer theorem", lectures: 1, clo: "CLO2" },
+      { chapter: "11", topic: "Study of RC and RL circuits", lectures: 1, clo: "CLO1" },
+      { chapter: "12", topic: "Study of RLC circuits", lectures: 1, clo: "CLO1" },
+      { chapter: "13", topic: "Introduction to PSpice simulation", lectures: 2, clo: "CLO2" }
+    ],
+    textBooks: [
+      "Robert L. Boylestad, 'Introductory Circuit Analysis', 11th ed. Pearson education international, USA, 2007",
+      "Charles K. Alexander and Matthew N. O. Sadiku, 'Fundamental of Electric Circuits', McGraw Hill, New York, 2009",
+      "L. Theraja and A. K. Theraja, 'A text book of Electrical Technology', Volume IV, 23th ed. Rajendra Ravindra Printers, India, 2007"
+    ],
+    assessment: {
+      attendance: 10,
+      classTest: 20,
+      midterm: 30,
+      final: 40
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Power point Presentation",
+      "Practical Demonstration",
+      "Data Collection",
+      "Data Analysis",
+      "Report Writing"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Assignment",
+      "Lab Report",
+      "Quizzes",
+      "Lab Exams (Mid & Final)",
+      "Viva"
+    ]
   }
 ];
 
 export const semesterStats = {
   totalCourses: 6,
   totalCredits: 15,
-  averageContactHours: 2.5
+  averageContactHours: 2.7
 };
