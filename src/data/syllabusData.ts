@@ -4,11 +4,14 @@ export interface Course {
   title: string;
   creditHours: number;
   contactHours: string;
+  prerequisite?: string;
   objectives: string[];
   outcomes: CourseOutcome[];
   content: CourseContent[];
   textBooks: string[];
   assessment: Assessment;
+  deliveryMethods?: string[];
+  assessmentTools?: string[];
 }
 
 export interface CourseOutcome {
@@ -21,8 +24,9 @@ export interface CourseOutcome {
 export interface CourseContent {
   chapter: string;
   topic: string;
-  lectures: number;
-  clo: string;
+  lectures?: number;
+  clo?: string;
+  section?: string;
 }
 
 export interface Assessment {
@@ -39,10 +43,11 @@ export const syllabusData: Course[] = [
     title: "Text of Ethics and Morality",
     creditHours: 1,
     contactHours: "2 CH per Week",
+    prerequisite: "",
     objectives: [
-      "To make students capable of understanding the text of the Holy Qur'an and basic Arabic language",
+      "To make students capable of understanding the text of the Holy Qur'an so that they can understand the rules of ethics from the main and basic ethical book as well as to make students capable of understanding the basic Arabic language so that they can communicate with the foreign countries and be fit with labor market worldwide especially in the Middle East",
       "To inspire students in reading the Holy Qur'an, which is the complete code of life",
-      "To make students familiar with Ayats of Ahkam of the Holy Qur'an"
+      "To make students familiar with Ayats of Ahkam of the Holy Qur'an so that they can lead their life being enlightened with them"
     ],
     outcomes: [
       {
@@ -59,30 +64,69 @@ export const syllabusData: Course[] = [
       },
       {
         clo: "CLO3",
-        description: "Achieve knowledge on various legal issues depicted in Quranic texts and save themselves from evil activity",
+        description: "Achieve knowledge on the various legal issues that are depicted in Qur'anic texts related to different laws of human life as well as able to save themselves from any evil activity, which boost up morally throughout their professional life",
         plo: "PLO8",
         bloomsLevel: "Cognitive/Applying"
       }
     ],
     content: [
-      { chapter: "1", topic: "Introduction to Ethics and Morality & Selected Qur'anic texts", lectures: 4, clo: "CLO1" },
-      { chapter: "2", topic: "Social peace and Arabic basics (letters, numbers)", lectures: 6, clo: "CLO1" },
-      { chapter: "3", topic: "Family duties and livelihood rules", lectures: 4, clo: "CLO2" },
-      { chapter: "4", topic: "Rules on interest, drugs, gambling", lectures: 5, clo: "CLO3" },
-      { chapter: "5", topic: "Marriage, divorce, and ethical directions", lectures: 3, clo: "CLO2" },
-      { chapter: "6-8", topic: "Arabic formation and conversation", lectures: 8, clo: "CLO1" }
+      { chapter: "1", topic: "An introduction to the text of Ethics and Morality", section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Selected text on the introductory chapter of a valuable Ethical Book - the holy Qur'an", lectures: 4, section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "An introduction to Arabic language", section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Identifying the forms of Arabic alphabet with example", section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Selected text on procreation of the creation of humankind: 22:5", section: "Midterm", clo: "CLO1" },
+      { chapter: "1", topic: "Selected text on Islamic monotheism: 2:1-5; 112:1-4", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Text on ensuring social peace by removing bad behavior 49:10-12", lectures: 6, section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "The sun letters and the moon letters", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Arabic numbers and common Arabic words used in daily life", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Arabic prepositions", section: "Midterm", clo: "CLO1" },
+      { chapter: "3", topic: "Selected text on duties and obligations towards family and relatives: 4:34-36", section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Selected text on the transition of human life: 10:24", lectures: 4, section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Selected text on the rule of livelihood: 2:172-174, 5:3-5", section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Exercise of Arabic demonstrative pronouns", section: "Midterm", clo: "CLO2" },
+      { chapter: "4", topic: "Selected text on the rule and impact of interest (al-riba) and loan: 2:275-279", section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "Selected Text on the rules and impact of drug and gambling: 5:90-91", lectures: 5, section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "Exercise of Arabic interrogative pronoun", section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "The name of days and months in Arabic", section: "Final", clo: "CLO3" },
+      { chapter: "4", topic: "Formation of Arabic word", section: "Final", clo: "CLO3" },
+      { chapter: "5", topic: "Selected Text on the rules and ethical directions of marriage, mahr and veil: 4:2-4; 24:30-31, 33:59", lectures: 3, section: "Final", clo: "CLO2" },
+      { chapter: "5", topic: "Text on the rule and ethical directions of divorce 2:227-230", section: "Final", clo: "CLO2" },
+      { chapter: "5", topic: "The names directions in Arabic", section: "Final", clo: "CLO2" },
+      { chapter: "5", topic: "Formation of verb in Arabic", section: "Final", clo: "CLO2" },
+      { chapter: "6", topic: "Formation of particle in Arabic", lectures: 2, section: "Final", clo: "CLO1" },
+      { chapter: "6", topic: "Selected text on the sermon of a father to his son: 31:13-19", section: "Final", clo: "CLO1" },
+      { chapter: "7", topic: "Selected text on the characteristics of human beings: 23:1-11; 25:63-76", lectures: 2, section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "Formation of Arabic sentence", lectures: 4, section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "Conversation in Arabic: 'Yourself'", section: "Final", clo: "CLO1" }
     ],
     textBooks: [
-      "Abbott, N., Studies in Arabic literary papyri II, Qur'anic commentary and tradition, Chicago, 1967",
+      "Abbott, N., Studies in Arabic literary papyri II, Qur'anic commentary and tradition, Chicago: University of Chicago, 1967",
       "Dr. M. Fazlur Rahman, Everyday Arabic Conversation, Riyad Prokashani, Dhaka, 2005",
-      "Haleem, M. A., Understanding the Qur'an: themes and Style, London, 1999"
+      "Haleem, M. A., Understanding the Qur'an: themes and Style, London: I. B. Tauris, 1999",
+      "Izzath Uroosa, Learning Arabic Language of the Qur'an, Darussalam, Riyadh, 2010",
+      "Saheeh International, The Qur'an Arabic Text with Corresponding English Meanings, Jeddah, Saudi Arabia, 1997"
     ],
     assessment: {
       attendance: 10,
       classTest: 10,
       midterm: 30,
       final: 50
-    }
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Questions and Answers",
+      "Tutorial",
+      "Discussions",
+      "Power point Presentation"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Class test",
+      "Quizzes/Assignment on problem solution",
+      "Mid-Term & Semester End Examination",
+      "Project evaluation & Viva"
+    ]
   },
   {
     id: "2",
@@ -90,55 +134,66 @@ export const syllabusData: Course[] = [
     title: "Advanced English",
     creditHours: 2,
     contactHours: "2 CH per Week",
+    prerequisite: "",
     objectives: [
-      "Develop four basic skills of English (Listening, Speaking, Reading, Writing)",
-      "Prepare students for IELTS/TOEFL exams for higher study abroad",
-      "Build confidence in speaking and writing with essential grammar"
+      "This course has been designed for the students of first semester because they need to develop four basic skills of English (i.e., Listening, Speaking, Reading and Writing) to a level that they can comprehend lectures given in English, comprehend literary, non-literary, formal and informal texts and communicate effectively both orally and in written form",
+      "They also need to prepare themselves for IELTS/TOEFL exams so that they can take these exams for their higher study abroad",
+      "They also need to build up confidence in their own speaking and writing which will be provided by teaching them essential grammatical points. This course is designed with an objective to fulfill this aim"
     ],
     outcomes: [
       {
         clo: "CLO1",
-        description: "Acquire four skills of English language to study, analyze, and explain science and engineering",
+        description: "Acquire four skills of English language which enable them to study, analyze, explain both orally and in written form different aspects of science and engineering",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Understand"
       },
       {
         clo: "CLO2",
-        description: "Understand lectures in English and write exam answers in correct standard English",
+        description: "Understand the lectures given in English and write answers in the examination using correct and standard English",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Understand"
       },
       {
         clo: "CLO3",
-        description: "Communicate effectively in science and engineering by overcoming language barriers",
+        description: "Communicate effectively in relation with science and engineering by overcoming English language barriers",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Apply"
       },
       {
         clo: "CLO4",
-        description: "Get good grades in international and competitive examinations",
+        description: "Get good grades in all international examinations, competitive examinations as well as internal examinations by using fluency in both spoken and written English",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Apply"
       },
       {
         clo: "CLO5",
-        description: "Study and comprehend Science and Engineering texts and journals",
+        description: "Study and comprehend Science and Engineering texts, reference books which are written in English, engineering and science related articles in national and international journals and acquire substantial knowledge about science and engineering",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Analyze"
       },
       {
         clo: "CLO6",
-        description: "Develop self-confidence in English throughout career",
+        description: "Develop a self-confidence in the use of English all through the science and engineering career and thus to achieve a lucrative social status",
         plo: "PLO10",
         bloomsLevel: "Cognitive/Evaluate"
       }
     ],
     content: [
-      { chapter: "Mid", topic: "Reading comprehension, writing, listening/speaking", lectures: 15, clo: "CLO1-6" },
-      { chapter: "Final", topic: "Advanced reading, composition, grammar, communication", lectures: 15, clo: "CLO1-6" }
+      { chapter: "Section-1", topic: "Reading-1 (Seen) - Reading from prescribed Text (First half)", lectures: 15, section: "Midterm", clo: "CLO1-6" },
+      { chapter: "Section-1", topic: "Reading-2 (Unseen) - Comprehension exercises", section: "Midterm", clo: "CLO1-6" },
+      { chapter: "Section-1", topic: "Writing-1 (Sentence Construction) - Grammar exercises", section: "Midterm", clo: "CLO1-6" },
+      { chapter: "Section-1", topic: "Writing-2 (Composition) - Paragraph and essay writing", section: "Midterm", clo: "CLO1-6" },
+      { chapter: "Section-1", topic: "Listening or Speaking - Communication skills", section: "Midterm", clo: "CLO1-6" },
+      { chapter: "Section-2", topic: "Reading-1 (Seen) - Reading from prescribed Text (Second half)", lectures: 15, section: "Final", clo: "CLO1-6" },
+      { chapter: "Section-2", topic: "Reading-2 (Unseen) - Advanced comprehension", section: "Final", clo: "CLO1-6" },
+      { chapter: "Section-2", topic: "Writing-1 (Sentence Construction) - Advanced grammar", section: "Final", clo: "CLO1-6" },
+      { chapter: "Section-2", topic: "Writing-2 (Composition) - Formal and informal writing", section: "Final", clo: "CLO1-6" },
+      { chapter: "Section-2", topic: "Listening or Speaking - Advanced communication", section: "Final", clo: "CLO1-6" }
     ],
     textBooks: [
-      "Exercises in Reading Comprehension by E.L. Tibbits, Longman",
+      "Exercises in Reading Comprehension by E.L. Tibbits, Longman Group Limited",
+      "Build up Your English, Radiant Publishers, Dhaka",
+      "Saadat, Syeda Sarwat (Ed.), Developing Skills in English, Friends' Book Corner, Dhaka",
       "Oxford Advanced Learner's Dictionary, Oxford University Press",
       "English Grammar in Use by Raymond Murphy, Cambridge University Press"
     ],
@@ -147,7 +202,22 @@ export const syllabusData: Course[] = [
       classTest: 10,
       midterm: 30,
       final: 50
-    }
+    },
+    deliveryMethods: [
+      "Lecture",
+      "Interactive Discussion",
+      "Group Activities",
+      "Reading Practice",
+      "Writing Exercises",
+      "Listening & Speaking Sessions"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Reading Comprehension Tests",
+      "Writing Assignments",
+      "Mid-Term & Final Examination",
+      "Oral Presentation"
+    ]
   },
   {
     id: "3",
