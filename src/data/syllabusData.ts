@@ -786,6 +786,6 @@ export const syllabusData: Course[] = [
 
 export const semesterStats = {
   totalCourses: 9,
-  totalCredits: 20.5,
+  totalCredits: 19,
   averageContactHours: 2.7
 };
