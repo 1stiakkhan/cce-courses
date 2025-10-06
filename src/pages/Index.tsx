@@ -3,6 +3,7 @@ import { syllabusData } from "@/data/syllabusData";
 import { CourseCard } from "@/components/CourseCard";
 import { SemesterOverview } from "@/components/SemesterOverview";
 import { SearchFilter } from "@/components/SearchFilter";
+import { DeveloperInfo } from "@/components/DeveloperInfo";
 import { GraduationCap } from "lucide-react";
 
 const Index = () => {
@@ -49,7 +50,9 @@ const Index = () => {
           )}
         </div>
 
-        <footer className="mt-16 text-center text-muted-foreground text-sm">
+        <DeveloperInfo />
+        
+        <footer className="mt-8 text-center text-muted-foreground text-sm">
           <p>Syllabus Dashboard • Designed to enhance learning experience</p>
         </footer>
       </div>
