@@ -34,24 +34,32 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="bg-primary/5 rounded-lg p-3 border border-primary/10">
-            <p className="text-xs text-muted-foreground mb-1">Assessment</p>
-            <div className="flex items-center gap-2">
-              <div className="flex-1">
-                <Progress value={course.assessment.final} className="h-2" />
-              </div>
-              <span className="text-xs font-medium text-foreground">100%</span>
+        <div className="mb-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-4 border border-primary/20">
+          <h4 className="text-sm font-semibold text-foreground mb-3">Mark Distribution (Total: 100 Marks)</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary">{course.assessment.attendance}</p>
+              <p className="text-xs text-muted-foreground">Attendance</p>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              Final: {course.assessment.final}% | Mid: {course.assessment.midterm}%
-            </p>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-secondary">{course.assessment.classTest}</p>
+              <p className="text-xs text-muted-foreground">Class Test</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-accent">{course.assessment.midterm}</p>
+              <p className="text-xs text-muted-foreground">Midterm</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-foreground">{course.assessment.final}</p>
+              <p className="text-xs text-muted-foreground">Final Exam</p>
+            </div>
           </div>
-          <div className="bg-secondary/5 rounded-lg p-3 border border-secondary/10">
-            <p className="text-xs text-muted-foreground mb-1">Learning Outcomes</p>
-            <p className="text-2xl font-bold text-foreground">{course.outcomes.length}</p>
-            <p className="text-xs text-muted-foreground">CLOs defined</p>
-          </div>
+        </div>
+
+        <div className="bg-secondary/5 rounded-lg p-3 border border-secondary/10 mb-4">
+          <p className="text-xs text-muted-foreground mb-1">Learning Outcomes</p>
+          <p className="text-2xl font-bold text-foreground">{course.outcomes.length}</p>
+          <p className="text-xs text-muted-foreground">CLOs defined</p>
         </div>
 
         <Button
@@ -108,19 +116,73 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                 <BookOpen className="w-5 h-5 text-accent" />
                 <h4 className="font-semibold text-foreground">Course Content</h4>
               </div>
-              <div className="space-y-2">
-                {course.content.map((content, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-muted/20 rounded-lg border border-border">
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-foreground">{content.topic}</p>
-                      <p className="text-xs text-muted-foreground mt-1">Chapter {content.chapter}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm font-semibold text-primary">{content.lectures}</p>
-                      <p className="text-xs text-muted-foreground">lectures</p>
-                    </div>
-                  </div>
-                ))}
+              
+              {/* Midterm Section */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-3 bg-accent/10 rounded-lg p-2 border border-accent/20">
+                  <Badge variant="default" className="bg-accent text-accent-foreground">
+                    Midterm Exam ({course.assessment.midterm} Marks)
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  {course.content
+                    .filter(content => content.section === "Midterm")
+                    .map((content, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 bg-accent/5 rounded-lg border border-accent/20">
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-foreground">{content.topic}</p>
+                          <div className="flex gap-2 mt-1">
+                            <p className="text-xs text-muted-foreground">Chapter {content.chapter}</p>
+                            {content.clo && (
+                              <Badge variant="outline" className="text-xs h-5">
+                                {content.clo}
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                        {content.lectures && (
+                          <div className="text-right ml-2">
+                            <p className="text-sm font-semibold text-accent">{content.lectures}</p>
+                            <p className="text-xs text-muted-foreground">lectures</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              {/* Final Section */}
+              <div>
+                <div className="flex items-center gap-2 mb-3 bg-primary/10 rounded-lg p-2 border border-primary/20">
+                  <Badge variant="default" className="bg-primary text-primary-foreground">
+                    Final Exam ({course.assessment.final} Marks)
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  {course.content
+                    .filter(content => content.section === "Final")
+                    .map((content, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 bg-primary/5 rounded-lg border border-primary/20">
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-foreground">{content.topic}</p>
+                          <div className="flex gap-2 mt-1">
+                            <p className="text-xs text-muted-foreground">Chapter {content.chapter}</p>
+                            {content.clo && (
+                              <Badge variant="outline" className="text-xs h-5">
+                                {content.clo}
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                        {content.lectures && (
+                          <div className="text-right ml-2">
+                            <p className="text-sm font-semibold text-primary">{content.lectures}</p>
+                            <p className="text-xs text-muted-foreground">lectures</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
 
