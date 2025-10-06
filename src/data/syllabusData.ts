@@ -535,11 +535,257 @@ export const syllabusData: Course[] = [
       "Lab Exams (Mid & Final)",
       "Viva"
     ]
+  },
+  {
+    id: "7",
+    code: "CCE-1102",
+    title: "Engineering Drawing Sessional",
+    creditHours: 1,
+    contactHours: "2 CH per Week",
+    prerequisite: "",
+    objectives: [
+      "Students will learn to sketch (technical) the different view of an object",
+      "Students will learn CAD (Computer Aided Design)"
+    ],
+    outcomes: [
+      {
+        clo: "CLO1",
+        description: "Understand the importance of ISO Standards in Engineering Drawing, lettering and dimensioning. Perform basic sketching techniques (2D & 3D) will improve",
+        plo: "PLO1",
+        bloomsLevel: "Cognitive/Understanding"
+      },
+      {
+        clo: "CLO2",
+        description: "Through exercises in Orthographic Projection, isometric, sectional, and perspective drawing",
+        plo: "PLO3",
+        bloomsLevel: "Psychomotor/Manipulation"
+      },
+      {
+        clo: "CLO3",
+        description: "Use extract information from drawings and geometric models to solve Engineering Drawing problems",
+        plo: "PLO2",
+        bloomsLevel: "Psychomotor/Manipulation"
+      },
+      {
+        clo: "CLO4",
+        description: "Use the knowledge of sketching and technical drawing in the various fields of engineering",
+        plo: "PLO4",
+        bloomsLevel: "Cognitive/Apply"
+      }
+    ],
+    content: [
+      { chapter: "1", topic: "Introduction orthographic projection: Scale drawing, Sectional view, Top and side view Isometric views", lectures: 1, clo: "CLO1" },
+      { chapter: "1", topic: "Missing line, Auxiliary view, Pictorial views", clo: "CLO1" },
+      { chapter: "2", topic: "Drawing standard and practices: Interpenetrating of surface, Development of surfaces", lectures: 1, clo: "CLO1" },
+      { chapter: "2", topic: "Machine drawings, and technical sketching", clo: "CLO1" },
+      { chapter: "3", topic: "Introduction to Computer Aided Design (CAD): Project on Engineering Drawing and CAD", lectures: 1, clo: "CLO2" },
+      { chapter: "4", topic: "Introduction and Familiarization of Drawing Instrument", clo: "CLO2" },
+      { chapter: "5", topic: "Line, Dimensioning, Scale of drawing and Plane Geometry", lectures: 1, clo: "CLO2" },
+      { chapter: "6", topic: "Orthographic views (Free hand Drawing)", clo: "CLO2-3" },
+      { chapter: "7", topic: "Orthographic views (With Dimension)", clo: "CLO2-3" },
+      { chapter: "8", topic: "Missing line, Auxiliary view, Pictorial view and sectional view", clo: "CLO2" },
+      { chapter: "9", topic: "Isometric views", lectures: 1, clo: "CLO2" },
+      { chapter: "10", topic: "Development of surfaces", clo: "CLO2" },
+      { chapter: "11", topic: "Machine drawings and technical sketching", clo: "CLO2" },
+      { chapter: "12", topic: "Study on CAD Drawing", clo: "CLO2-4" },
+      { chapter: "13", topic: "Project on engineering drawing and CAD using contemporary packages in 2D", lectures: 1, clo: "CLO2-4" }
+    ],
+    textBooks: [
+      "K. Venkata Reddy, Textbook of Engineering Drawing, 2nd ed., India: BS Publications, 2009",
+      "Amalesh Chandra Mandal, Md. Quamrul Islam., Mechanical engineering drawing, 1st ed., Bangladesh, Associates Printing press, 2007"
+    ],
+    assessment: {
+      attendance: 10,
+      classTest: 20,
+      midterm: 30,
+      final: 40
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Power point Presentation",
+      "Practical Demonstration",
+      "Data Collection",
+      "Data Analysis",
+      "Report Writing",
+      "Q/A",
+      "Discussion"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Assignment",
+      "Lab Report",
+      "Quizzes",
+      "Lab Exams (Mid & Final)",
+      "Viva"
+    ]
+  },
+  {
+    id: "8",
+    code: "MATH-1101",
+    title: "Mathematics-I (Differential and Integral Calculus)",
+    creditHours: 3,
+    contactHours: "3 CH per Week",
+    prerequisite: "",
+    objectives: [
+      "Provide students with an understanding of how to find out the rate of change of various functions",
+      "Determine the area and volume of different types of objects",
+      "Introduce students with the various techniques of differentiation and integration",
+      "Understanding calculus which divides naturally into differential calculus and integral calculus"
+    ],
+    outcomes: [
+      {
+        clo: "CLO1",
+        description: "For complex Engineering problems, get Knowledge of the limit, continuity, and differentiability, power series, Rolle's Theorem, Mean value theorem, Taylor, and Mclaurin's series. Also, the concept of partial derivative and Integration",
+        plo: "PLO1",
+        bloomsLevel: "Cognitive"
+      },
+      {
+        clo: "CLO2",
+        description: "By using the above mentioned foundational mathematical information; One can implement it to solve the mathematical problems, which is expressing engineering principles",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive"
+      }
+    ],
+    content: [
+      { chapter: "1", topic: "Introduction to the course, Basic Guidelines and advises for the course", lectures: 3, section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Functions, Limit", lectures: 4, section: "Midterm", clo: "CLO1" },
+      { chapter: "3", topic: "Continuity and Differentiability", lectures: 4, section: "Midterm", clo: "CLO1" },
+      { chapter: "4", topic: "Leibniz Theorem, Rolle's Theorem", lectures: 4, section: "Midterm", clo: "CLO1-2" },
+      { chapter: "5", topic: "Mean Value Theorem, Taylor's Theorem, Maclaurian's Formulae", lectures: 5, section: "Midterm", clo: "CLO1-2" },
+      { chapter: "6", topic: "Partial Differentiation", lectures: 2, section: "Final", clo: "CLO1" },
+      { chapter: "7", topic: "Euler's formula, Maxima and Minima with applications", lectures: 6, section: "Final", clo: "CLO1-2" },
+      { chapter: "8", topic: "Indefinite integral: Physical meaning of integration, method of Substitution", lectures: 1, section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "Integration by parts, Special trigonometric functions", section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "Rational and partial fractions, Different techniques of integration", section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Fundamental Theorem, General Properties and Evaluations of Definite Integral", lectures: 1, section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Reduction Formula, Definite Integral as the limit of a sum", lectures: 1, section: "Final", clo: "CLO1" },
+      { chapter: "10", topic: "Integration by method of successive reduction", lectures: 1, section: "Final", clo: "CLO1" },
+      { chapter: "11", topic: "Gamma and Beta Function, Jacobian Theorem", lectures: 3, section: "Final", clo: "CLO1" },
+      { chapter: "12", topic: "Double Integral Change of order of Integration, Triple Integral", lectures: 1, section: "Final", clo: "CLO2" },
+      { chapter: "12", topic: "Physical Application of double and Triple Integral", section: "Final", clo: "CLO2" },
+      { chapter: "12", topic: "Quadrature, Determination of length of Curves, Finding Area of a region", section: "Final", clo: "CLO2" },
+      { chapter: "13", topic: "Areas of surfaces of revolution, Volumes of solids of revolution", lectures: 1, section: "Final", clo: "CLO2" }
+    ],
+    textBooks: [
+      "Stein, Sherman K., and Anthony Barcellos. Calculus and analytic geometry. New York: McGraw-Hill, 1992",
+      "Stroud, Kenneth Arthur, and Dexter J. Booth. Engineering mathematics. Macmillan International Higher Education, 2013",
+      "Mohammad, Khosh, P. K. Bhattacharjee, and Md Latif. 'A textbook on differential calculus.' (2001)",
+      "Das, B. C., and B. C. Mukherjee. 'Integral Calculus: Differential Equations.' UN Dhur & Sons Private Limited. 55th Edition. pp 554 (2012)"
+    ],
+    assessment: {
+      attendance: 10,
+      classTest: 10,
+      midterm: 30,
+      final: 50
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Questions and Answers",
+      "Tutorial",
+      "Discussions",
+      "Power point Presentation"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Class test",
+      "Quizzes/Assignment on problem solution",
+      "Mid-Term & Semester End Examination",
+      "Project evaluation & Viva"
+    ]
+  },
+  {
+    id: "9",
+    code: "PHY-1101",
+    title: "Physics I (Mechanics, Waves, Optics, Heat and Thermodynamics)",
+    creditHours: 3,
+    contactHours: "3 CH per Week",
+    prerequisite: "",
+    objectives: [
+      "Study some of the applications of physics to technology and other scientific fields",
+      "Give a solid grounding in basic physics that will serve as a basis for further study in Engineering",
+      "Develop analytical and mathematical skills that will be applicable to many scientific endeavors",
+      "Demonstrate the application of the scientific method through laboratory experiments",
+      "Develop an appreciation for how scientific measurements are made",
+      "Assess the role of physics, in helping us to better understand the complex, technological society"
+    ],
+    outcomes: [
+      {
+        clo: "CLO1",
+        description: "Demonstrate an understanding of mechanics, waves, optics, heat and thermodynamics",
+        plo: "PLO1",
+        bloomsLevel: "Cognitive"
+      },
+      {
+        clo: "CLO2",
+        description: "Apply basic physics laws and formulae to complex cases like; Fly wheel, Elastic bending, forced oscillation, Compound Pendulum, Heat engine, Polarization etc",
+        plo: "PLO2",
+        bloomsLevel: "Cognitive"
+      }
+    ],
+    content: [
+      { chapter: "1", topic: "Introduction to the course, Basic Guidelines", lectures: 1, section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Dynamics of Rigid Body: Linear motion of a body as function of time, position, and velocity", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Momentum: Conservation theorem of momentum and energy, collision, and torque", section: "Midterm", clo: "CLO1" },
+      { chapter: "2", topic: "Center of mass of rigid body, Rotational kinetic energy, Fly wheel", section: "Midterm", clo: "CLO2" },
+      { chapter: "2", topic: "Axes theorems and their applications", section: "Midterm", clo: "CLO2" },
+      { chapter: "3", topic: "Gravity and Gravitation: Definitions, Compound pendulum", section: "Midterm", clo: "CLO1-2" },
+      { chapter: "3", topic: "Gravitational potentials and fields and relation between them", section: "Midterm", clo: "CLO1" },
+      { chapter: "3", topic: "Potential due to spherical shell, Kepler's law of planetary motion", section: "Midterm", clo: "CLO1-2" },
+      { chapter: "3", topic: "Escape velocity", section: "Midterm", clo: "CLO2" },
+      { chapter: "4", topic: "Elasticity: Hooke's law, Relation between different elastic constants", section: "Midterm", clo: "CLO1" },
+      { chapter: "4", topic: "Bending of beams, cantilever", section: "Midterm", clo: "CLO2" },
+      { chapter: "4", topic: "Determination of Young's modulus and its engineering applications", section: "Midterm", clo: "CLO2" },
+      { chapter: "5", topic: "Surface Tension: Definitions, Cohesion, Adhesion, and molecular range", section: "Final", clo: "CLO1" },
+      { chapter: "5", topic: "Molecular theory of surface tension, Capillarity, angle of contact", section: "Final", clo: "CLO2" },
+      { chapter: "5", topic: "Expression for surface tension, Relation between surface energy and surface tension", section: "Final", clo: "CLO2" },
+      { chapter: "6", topic: "Fluid Dynamics and Viscosity: Streamline and turbulent motion", section: "Final", clo: "CLO1" },
+      { chapter: "6", topic: "Equation of continuity, Energy of a liquid in motion, Bernoulli's theorem", section: "Final", clo: "CLO1" },
+      { chapter: "6", topic: "Viscosity, coefficient of viscosity, Stoke's law", section: "Final", clo: "CLO1" },
+      { chapter: "7", topic: "Waves and Oscillations: Waves in elastic media, standing waves, Sound waves", section: "Final", clo: "CLO1" },
+      { chapter: "7", topic: "Beats and Doppler's effect in sound", section: "Final", clo: "CLO2" },
+      { chapter: "7", topic: "Simple harmonic motions, total energy and average energy", section: "Final", clo: "CLO1" },
+      { chapter: "7", topic: "Damped and forced vibration, resonance", section: "Final", clo: "CLO2" },
+      { chapter: "8", topic: "Thermodynamics: Thermodynamic system", section: "Final", clo: "CLO1" },
+      { chapter: "8", topic: "First and second law of thermodynamics and their applications", section: "Final", clo: "CLO2" },
+      { chapter: "8", topic: "Carnot's heat engine, the efficiency of engine, Entropy and refrigerator", section: "Final", clo: "CLO2" },
+      { chapter: "9", topic: "Optics: Theories of light, Interference of light, Young's double slit experiment", section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Fresnel and Fraunhofer diffraction", section: "Final", clo: "CLO1" },
+      { chapter: "9", topic: "Polarization of light, Production and analysis of polarized light", section: "Final", clo: "CLO2" },
+      { chapter: "9", topic: "Brewster's law, Malus' law", section: "Final", clo: "CLO1" }
+    ],
+    textBooks: [
+      "D.S. Mathur, Elements of Properties of matter, S. Chand and Company, 5th Edition, ISBN: 9788121908153, 2008",
+      "D. Halliday and R. Resnick, Fundamentals of Physics Extended, Wiley, 10th Edition, ISBN: 978-1118230619, 2013",
+      "Brijlal and N. Subrahmanyum, Heat and thermodynamics, S. Chand and Company, 2001"
+    ],
+    assessment: {
+      attendance: 10,
+      classTest: 10,
+      midterm: 30,
+      final: 50
+    },
+    deliveryMethods: [
+      "Lecture",
+      "White Board Writing",
+      "Questions and Answers",
+      "Tutorial",
+      "Discussions",
+      "Power point Presentation"
+    ],
+    assessmentTools: [
+      "Class Attendance",
+      "Class test",
+      "Quizzes/Assignment on problem solution",
+      "Mid-Term & Semester End Examination",
+      "Project evaluation & Viva"
+    ]
   }
 ];
 
 export const semesterStats = {
-  totalCourses: 6,
-  totalCredits: 15,
+  totalCourses: 9,
+  totalCredits: 20.5,
   averageContactHours: 2.7
 };
