@@ -1,20 +1,27 @@
-import { useState } from "react";
-import { syllabusData } from "@/data/syllabusData";
+import { useMemo, useState } from "react";
+import { semesters, programStats } from "@/data/syllabusData";
 import { CourseCard } from "@/components/CourseCard";
 import { SemesterOverview } from "@/components/SemesterOverview";
+import { SemesterTabs } from "@/components/SemesterTabs";
 import { SearchFilter } from "@/components/SearchFilter";
 import { DeveloperInfo } from "@/components/DeveloperInfo";
 import { GraduationCap } from "lucide-react";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeSemester, setActiveSemester] = useState(1);
 
-  const filteredCourses = syllabusData.filter(
-    (course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.content.some((c) => c.topic.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  const semester = semesters.find((s) => s.id === activeSemester) ?? semesters[0];
+
+  const filteredCourses = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return semester.courses.filter(
+      (course) =>
+        course.title.toLowerCase().includes(term) ||
+        course.code.toLowerCase().includes(term) ||
+        course.content.some((c) => c.topic.toLowerCase().includes(term))
+    );
+  }, [semester, searchTerm]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,17 +33,22 @@ const Index = () => {
             </div>
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent mb-4">
-            First Semester Syllabus
+            CCE Syllabus Explorer
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Interactive dashboard to visualize and explore your academic journey
+            All {programStats.totalSemesters} semesters, {programStats.totalCourses} courses and{" "}
+            {programStats.totalCredits} credit hours in one interactive dashboard
           </p>
           <div className="mt-4 inline-block px-4 py-2 bg-accent/10 border border-accent/20 rounded-full">
             <p className="text-sm text-accent font-medium">Autumn 2022 • OBE Curriculum</p>
           </div>
         </header>
 
-        <SemesterOverview />
+        <SemesterTabs activeSemester={activeSemester} onSelect={setActiveSemester} />
+
+        <h2 className="text-2xl font-bold text-foreground text-center mb-6">{semester.name}</h2>
+
+        <SemesterOverview semester={semester} />
 
         <SearchFilter searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
@@ -51,7 +63,7 @@ const Index = () => {
         </div>
 
         <DeveloperInfo />
-        
+
         <footer className="mt-8 text-center text-muted-foreground text-sm">
           <p>Syllabus Dashboard • Designed to enhance learning experience</p>
         </footer>
