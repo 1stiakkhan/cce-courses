@@ -1,204 +1,87 @@
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, BookOpen, Clock, Target, GraduationCap } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Course } from "@/data/syllabusData";
-import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { isSessional } from "@/lib/courseUtils";
+import { cn } from "@/lib/utils";
 
 interface CourseCardProps {
   course: Course;
+  onOpen: (course: Course) => void;
 }
 
-export const CourseCard = ({ course }: CourseCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
+  const sessional = isSessional(course);
+
+  const marks = [
+    { label: "Attendance", value: course.assessment.attendance },
+    { label: "Class Test", value: course.assessment.classTest },
+    { label: "Midterm", value: course.assessment.midterm },
+    { label: "Final", value: course.assessment.final },
+  ];
 
   return (
-    <Card className="overflow-hidden border-border bg-card hover:shadow-[var(--shadow-glow)] transition-all duration-300">
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                {course.code}
-              </Badge>
-              <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20">
-                {course.creditHours} Credits
-              </Badge>
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-1">{course.title}</h3>
-            <p className="text-sm text-muted-foreground flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              {course.contactHours}
-            </p>
-          </div>
-        </div>
-
-        <div className="mb-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-4 border border-primary/20">
-          <h4 className="text-sm font-semibold text-foreground mb-3">Mark Distribution (Total: 100 Marks)</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">{course.assessment.attendance}</p>
-              <p className="text-xs text-muted-foreground">Attendance</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-secondary">{course.assessment.classTest}</p>
-              <p className="text-xs text-muted-foreground">Class Test</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-accent">{course.assessment.midterm}</p>
-              <p className="text-xs text-muted-foreground">Midterm</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-foreground">{course.assessment.final}</p>
-              <p className="text-xs text-muted-foreground">Final Exam</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-secondary/5 rounded-lg p-3 border border-secondary/10 mb-4">
-          <p className="text-xs text-muted-foreground mb-1">Learning Outcomes</p>
-          <p className="text-2xl font-bold text-foreground">{course.outcomes.length}</p>
-          <p className="text-xs text-muted-foreground">CLOs defined</p>
-        </div>
-
-        <Button
-          variant="ghost"
-          className="w-full justify-between hover:bg-muted/50"
-          onClick={() => setIsExpanded(!isExpanded)}
+    <article className="flex h-full flex-col rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-shadow duration-200 hover:shadow-[var(--shadow-card)]">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <span
+          className={cn(
+            "rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider",
+            sessional
+              ? "bg-[hsl(var(--accent-soft))] text-accent"
+              : "bg-[hsl(var(--primary-soft))] text-primary"
+          )}
         >
-          <span className="text-sm font-medium">
-            {isExpanded ? "Show Less" : "View Details"}
-          </span>
-          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-        </Button>
-
-        {isExpanded && (
-          <div className="mt-6 space-y-6 animate-in slide-in-from-top-2 duration-300">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Target className="w-5 h-5 text-primary" />
-                <h4 className="font-semibold text-foreground">Course Objectives</h4>
-              </div>
-              <ul className="space-y-2">
-                {course.objectives.map((obj, idx) => (
-                  <li key={idx} className="text-sm text-muted-foreground pl-4 border-l-2 border-primary/30">
-                    {obj}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <GraduationCap className="w-5 h-5 text-secondary" />
-                <h4 className="font-semibold text-foreground">Learning Outcomes</h4>
-              </div>
-              <div className="space-y-3">
-                {course.outcomes.map((outcome) => (
-                  <div key={outcome.clo} className="bg-muted/30 rounded-lg p-3 border border-border">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="secondary" className="text-xs">
-                        {outcome.clo}
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        {outcome.bloomsLevel}
-                      </Badge>
-                    </div>
-                    <p className="text-sm text-foreground">{outcome.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="w-5 h-5 text-accent" />
-                <h4 className="font-semibold text-foreground">Course Content</h4>
-              </div>
-              
-              {/* Midterm Section */}
-              <div className="mb-6">
-                <div className="flex items-center gap-2 mb-3 bg-accent/10 rounded-lg p-2 border border-accent/20">
-                  <Badge variant="default" className="bg-accent text-accent-foreground">
-                    Midterm Exam ({course.assessment.midterm} Marks)
-                  </Badge>
-                </div>
-                <div className="space-y-2">
-                  {course.content
-                    .filter(content => content.section === "Midterm")
-                    .map((content, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-accent/5 rounded-lg border border-accent/20">
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-foreground">{content.topic}</p>
-                          <div className="flex gap-2 mt-1">
-                            <p className="text-xs text-muted-foreground">Chapter {content.chapter}</p>
-                            {content.clo && (
-                              <Badge variant="outline" className="text-xs h-5">
-                                {content.clo}
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                        {content.lectures && (
-                          <div className="text-right ml-2">
-                            <p className="text-sm font-semibold text-accent">{content.lectures}</p>
-                            <p className="text-xs text-muted-foreground">lectures</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                </div>
-              </div>
-
-              {/* Final Section */}
-              <div>
-                <div className="flex items-center gap-2 mb-3 bg-primary/10 rounded-lg p-2 border border-primary/20">
-                  <Badge variant="default" className="bg-primary text-primary-foreground">
-                    Final Exam ({course.assessment.final} Marks)
-                  </Badge>
-                </div>
-                <div className="space-y-2">
-                  {course.content
-                    .filter(content => content.section === "Final")
-                    .map((content, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-primary/5 rounded-lg border border-primary/20">
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-foreground">{content.topic}</p>
-                          <div className="flex gap-2 mt-1">
-                            <p className="text-xs text-muted-foreground">Chapter {content.chapter}</p>
-                            {content.clo && (
-                              <Badge variant="outline" className="text-xs h-5">
-                                {content.clo}
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                        {content.lectures && (
-                          <div className="text-right ml-2">
-                            <p className="text-sm font-semibold text-primary">{content.lectures}</p>
-                            <p className="text-xs text-muted-foreground">lectures</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">Recommended Textbooks</h4>
-              <ul className="space-y-2">
-                {course.textBooks.map((book, idx) => (
-                  <li key={idx} className="text-sm text-muted-foreground pl-4 border-l-2 border-accent/30">
-                    {book}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
+          {sessional ? "Sessional" : "Theory"}
+        </span>
+        <span className="font-mono text-xs text-muted-foreground">{course.code}</span>
       </div>
-    </Card>
+
+      <h3 className="mb-2 text-base font-semibold leading-snug tracking-tight text-foreground">
+        {course.title}
+      </h3>
+
+      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+        <span className="font-medium text-foreground">
+          {course.creditHours} {course.creditHours === 1 ? "Credit" : "Credits"}
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <Clock className="h-3.5 w-3.5" />
+          {course.contactHours}
+        </span>
+      </div>
+
+      <div className="mt-auto space-y-3">
+        <div className="rounded-lg border border-border bg-muted/40 p-3">
+          <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            Marks Distribution
+          </p>
+          <div className="grid grid-cols-4 gap-2 text-center">
+            {marks.map((m) => (
+              <div key={m.label}>
+                <p className="text-sm font-semibold tabular-nums text-foreground">{m.value}</p>
+                <p className="mt-0.5 text-[10px] leading-tight text-muted-foreground">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-border pt-3">
+          <span className="text-xs text-muted-foreground">
+            {course.outcomes.length} CLOs · {course.content.length} topics
+          </span>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => onOpen(course)}
+            className={cn(
+              "h-8 gap-1 px-2 text-xs font-medium",
+              sessional ? "text-accent hover:text-accent" : "text-primary hover:text-primary"
+            )}
+          >
+            Details
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Button>
+        </div>
+      </div>
+    </article>
   );
 };

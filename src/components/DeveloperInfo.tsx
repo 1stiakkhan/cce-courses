@@ -1,83 +1,74 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, ExternalLink, Code2, Sparkles, GraduationCap } from "lucide-react";
 
 export const DeveloperInfo = () => {
   return (
-    <Card className="mt-16 border-primary/20 bg-gradient-to-br from-card to-card/50">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-2xl">
-          <Code2 className="w-6 h-6 text-primary" />
-          About The Developer
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-foreground">
-            Hello! I'm Istiak Khan 🎓
-          </h3>
-          
-          <div className="space-y-3">
-            <h4 className="font-medium text-primary flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              Who Am I:
-            </h4>
-            <ul className="space-y-2 ml-6">
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <GraduationCap className="w-4 h-4 text-accent" />
-                Computer Science Student
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Code2 className="w-4 h-4 text-accent" />
-                Passionate Developer
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Sparkles className="w-4 h-4 text-accent" />
-                Problem Solver
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Sparkles className="w-4 h-4 text-accent" />
-                Always Learning New Tech
-              </li>
-            </ul>
+    <section className="mt-12 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8">
+      <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
+        <div>
+          <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <Code2 className="h-3.5 w-3.5" />
+            About The Developer
           </div>
+          <h2 className="mb-4 text-xl font-semibold tracking-tight text-foreground">
+            Hello! I'm Istiak Khan 🎓
+          </h2>
 
-          <div className="space-y-3 pt-4">
-            <h4 className="font-medium text-primary flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              Contact & Feedback:
-            </h4>
-            <p className="text-muted-foreground ml-6">
+          <p className="mb-2 flex items-center gap-2 text-sm font-medium text-foreground">
+            <Sparkles className="h-4 w-4 text-primary" />
+            Who Am I:
+          </p>
+          <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+            <li className="flex items-center gap-2">
+              <GraduationCap className="h-4 w-4 text-accent" />
+              Computer Science Student
+            </li>
+            <li className="flex items-center gap-2">
+              <Code2 className="h-4 w-4 text-accent" />
+              Passionate Developer
+            </li>
+            <li className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-accent" />
+              Problem Solver
+            </li>
+            <li className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-accent" />
+              Always Learning New Tech
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex flex-col justify-center gap-4 rounded-xl border border-border bg-muted/40 p-5">
+          <div>
+            <p className="mb-1.5 flex items-center gap-2 text-sm font-medium text-foreground">
+              <Mail className="h-4 w-4 text-primary" />
+              Contact &amp; Feedback:
+            </p>
+            <p className="text-sm text-muted-foreground">
               Send your suggestions and feedback directly to me!
             </p>
           </div>
+          <div className="flex flex-wrap gap-2">
+            <Button asChild size="sm">
+              <a href="https://t.me/ik_051" target="_blank" rel="noopener noreferrer" className="gap-2">
+                <Mail className="h-4 w-4" />
+                Contact Developer
+              </a>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <a
+                href="https://linktr.ee/istiak_khan_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                More Links
+              </a>
+            </Button>
+          </div>
         </div>
-
-        <div className="flex flex-wrap gap-3 pt-4">
-          <Button variant="default" asChild>
-            <a 
-              href="https://t.me/ik_051" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="gap-2"
-            >
-              <Mail className="w-4 h-4" />
-              Contact Developer
-            </a>
-          </Button>
-          <Button variant="outline" asChild>
-            <a 
-              href="https://linktr.ee/istiak_khan_" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="gap-2"
-            >
-              <ExternalLink className="w-4 h-4" />
-              More Links
-            </a>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 };
