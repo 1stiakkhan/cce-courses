@@ -1,45 +1,43 @@
-import { Card } from "@/components/ui/card";
-import { BookOpen, Clock, Award } from "lucide-react";
+import { BookOpen, Award, FlaskConical, Library } from "lucide-react";
 import { getSemesterStats, Semester } from "@/data/syllabusData";
+import { isSessional } from "@/lib/courseUtils";
 
 interface SemesterOverviewProps {
   semester: Semester;
 }
 
+const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
+
 export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
   const stats = getSemesterStats(semester);
+  const sessionalCount = semester.courses.filter(isSessional).length;
+  const theoryCount = semester.courses.length - sessionalCount;
+
+  const items = [
+    { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen },
+    { label: "Total Credits", value: `${stats.totalCredits}`, icon: Award },
+    { label: "Theory Courses", value: pad(theoryCount), icon: Library },
+    { label: "Sessional Courses", value: pad(sessionalCount), icon: FlaskConical },
+  ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <Card className="p-6 bg-gradient-to-br from-primary/20 to-primary/5 border-primary/20">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Total Courses</p>
-            <p className="text-4xl font-bold text-foreground">{stats.totalCourses}</p>
+    <section className="mb-8 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
+      <h2 className="mb-5 text-base font-semibold tracking-tight text-foreground">
+        {semester.name} Overview
+      </h2>
+      <div className="grid grid-cols-2 gap-y-6 divide-border sm:grid-cols-4 sm:divide-x">
+        {items.map(({ label, value, icon: Icon }) => (
+          <div key={label} className="px-0 sm:px-6 sm:first:pl-0 sm:last:pr-0">
+            <div className="mb-1.5 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              <Icon className="h-3.5 w-3.5" />
+              {label}
+            </div>
+            <p className="text-3xl font-semibold tabular-nums tracking-tight text-foreground">
+              {value}
+            </p>
           </div>
-          <BookOpen className="w-12 h-12 text-primary opacity-50" />
-        </div>
-      </Card>
-
-      <Card className="p-6 bg-gradient-to-br from-secondary/20 to-secondary/5 border-secondary/20">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Total Credits</p>
-            <p className="text-4xl font-bold text-foreground">{stats.totalCredits}</p>
-          </div>
-          <Award className="w-12 h-12 text-secondary opacity-50" />
-        </div>
-      </Card>
-
-      <Card className="p-6 bg-gradient-to-br from-accent/20 to-accent/5 border-accent/20">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Avg Contact Hours</p>
-            <p className="text-4xl font-bold text-foreground">{stats.averageContactHours}</p>
-          </div>
-          <Clock className="w-12 h-12 text-accent opacity-50" />
-        </div>
-      </Card>
-    </div>
+        ))}
+      </div>
+    </section>
   );
 };
