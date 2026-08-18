@@ -21,7 +21,7 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
   ];
 
   return (
-    <section className="mb-8 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
+    <section className="mb-8 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
       <h2 className="mb-5 text-base font-semibold tracking-tight text-foreground">
         {semester.name} Overview
       </h2>
