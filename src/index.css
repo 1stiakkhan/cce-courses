@@ -80,6 +80,9 @@
     --border: 240 8% 18%;
     --input: 240 8% 18%;
     --ring: 262 78% 62%;
+    --shadow-soft: 0 1px 3px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -12px hsl(0 0% 0% / 0.5);
+    --shadow-lift: 0 1px 2px hsl(0 0% 0% / 0.3), 0 10px 28px -12px hsl(262 60% 40% / 0.4);
 
     --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -12px hsl(0 0% 0% / 0.5);
     --shadow-soft: 0 1px 3px hsl(0 0% 0% / 0.3);
