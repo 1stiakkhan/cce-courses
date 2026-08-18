@@ -20,7 +20,7 @@ export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
   ];
 
   return (
-    <article className="flex h-full flex-col rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-shadow duration-200 hover:shadow-[var(--shadow-card)]">
+    <article className="flex h-full flex-col rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[var(--shadow-lift)]">
       <div className="mb-3 flex items-center justify-between gap-2">
         <span
           className={cn(
