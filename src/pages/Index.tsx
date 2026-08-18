@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { semesters, programStats, Course } from "@/data/syllabusData";
 import { CourseCard } from "@/components/CourseCard";
 import { CourseDetailsDrawer } from "@/components/CourseDetailsDrawer";
@@ -8,6 +8,7 @@ import { SearchFilter, CourseTypeFilter } from "@/components/SearchFilter";
 import { DeveloperInfo } from "@/components/DeveloperInfo";
 import { SiteHeader } from "@/components/SiteHeader";
 import { isSessional } from "@/lib/courseUtils";
+import { CourseGridSkeleton, SemesterOverviewSkeleton } from "@/components/LoadingSkeletons";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,6 +16,13 @@ const Index = () => {
   const [activeSemester, setActiveSemester] = useState(1);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = window.setTimeout(() => setIsLoading(false), 320);
+    return () => window.clearTimeout(timer);
+  }, [activeSemester]);
 
   const semester = semesters.find((s) => s.id === activeSemester) ?? semesters[0];
 
@@ -60,7 +68,7 @@ const Index = () => {
 
         <SemesterTabs activeSemester={activeSemester} onSelect={setActiveSemester} />
 
-        <SemesterOverview semester={semester} />
+        {isLoading ? <SemesterOverviewSkeleton /> : <SemesterOverview semester={semester} />}
 
         <SearchFilter
           searchTerm={searchTerm}
@@ -70,7 +78,9 @@ const Index = () => {
           resultCount={filteredCourses.length}
         />
 
-        {filteredCourses.length > 0 ? (
+        {isLoading ? (
+          <CourseGridSkeleton count={Math.min(Math.max(semester.courses.length, 3), 6)} />
+        ) : filteredCourses.length > 0 ? (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course} onOpen={openCourse} />
