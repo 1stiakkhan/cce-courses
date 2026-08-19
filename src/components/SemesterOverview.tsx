@@ -14,10 +14,10 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
   const theoryCount = semester.courses.length - sessionalCount;
 
   const items = [
-    { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen },
-    { label: "Total Credits", value: `${stats.totalCredits}`, icon: Award },
-    { label: "Theory Courses", value: pad(theoryCount), icon: Library },
-    { label: "Sessional Courses", value: pad(sessionalCount), icon: FlaskConical },
+    { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen, grad: "stat-grad-purple", iconColor: "text-primary" },
+    { label: "Total Credits", value: `${stats.totalCredits}`, icon: Award, grad: "stat-grad-blue", iconColor: "text-[hsl(217_82%_56%)] dark:text-[hsl(217_80%_70%)]" },
+    { label: "Theory Courses", value: pad(theoryCount), icon: Library, grad: "stat-grad-blue", iconColor: "text-[hsl(217_82%_56%)] dark:text-[hsl(217_80%_70%)]" },
+    { label: "Sessional Courses", value: pad(sessionalCount), icon: FlaskConical, grad: "stat-grad-teal", iconColor: "text-accent" },
   ];
 
   return (
