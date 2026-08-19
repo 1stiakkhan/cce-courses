@@ -16,15 +16,28 @@ const Index = () => {
   const [activeSemester, setActiveSemester] = useState(1);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
+  // Semester currently rendered — lags behind activeSemester so previous cards stay visible
+  const [displayedSemesterId, setDisplayedSemesterId] = useState(1);
+  const [isSwapping, setIsSwapping] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    const timer = window.setTimeout(() => setIsLoading(false), 320);
+    const timer = window.setTimeout(() => setInitialLoading(false), 320);
     return () => window.clearTimeout(timer);
-  }, [activeSemester]);
+  }, []);
 
-  const semester = semesters.find((s) => s.id === activeSemester) ?? semesters[0];
+  useEffect(() => {
+    if (activeSemester === displayedSemesterId) return;
+    setIsSwapping(true);
+    const timer = window.setTimeout(() => {
+      setDisplayedSemesterId(activeSemester);
+      setIsSwapping(false);
+    }, 220);
+    return () => window.clearTimeout(timer);
+  }, [activeSemester, displayedSemesterId]);
+
+  const semester =
+    semesters.find((s) => s.id === displayedSemesterId) ?? semesters[0];
 
   const filteredCourses = useMemo(() => {
     const term = searchTerm.toLowerCase();
@@ -68,7 +81,17 @@ const Index = () => {
 
         <SemesterTabs activeSemester={activeSemester} onSelect={setActiveSemester} />
 
-        {isLoading ? <SemesterOverviewSkeleton /> : <SemesterOverview semester={semester} />}
+        <div
+          className={`transition-all duration-200 ${
+            isSwapping ? "opacity-50 blur-[1px]" : "opacity-100 blur-0"
+          }`}
+        >
+          {initialLoading ? (
+            <SemesterOverviewSkeleton />
+          ) : (
+            <SemesterOverview semester={semester} />
+          )}
+        </div>
 
         <SearchFilter
           searchTerm={searchTerm}
@@ -78,10 +101,15 @@ const Index = () => {
           resultCount={filteredCourses.length}
         />
 
-        {isLoading ? (
+        {initialLoading ? (
           <CourseGridSkeleton count={Math.min(Math.max(semester.courses.length, 3), 6)} />
         ) : filteredCourses.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div
+            key={semester.id}
+            className={`grid animate-fade-in grid-cols-1 gap-5 transition-all duration-200 md:grid-cols-2 xl:grid-cols-3 ${
+              isSwapping ? "scale-[0.99] opacity-50" : "scale-100 opacity-100"
+            }`}
+          >
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course} onOpen={openCourse} />
             ))}
