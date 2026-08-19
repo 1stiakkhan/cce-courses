@@ -26,11 +26,16 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
         {semester.name} Overview
       </h2>
       <div className="grid grid-cols-2 gap-y-6 divide-border sm:grid-cols-4 sm:divide-x">
-        {items.map(({ label, value, icon: Icon }) => (
-          <div key={label} className="px-0 sm:px-6 sm:first:pl-0 sm:last:pr-0">
-            <div className="mb-1.5 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              <Icon className="h-3.5 w-3.5" />
-              {label}
+        {items.map(({ label, value, icon: Icon, grad, iconColor }) => (
+          <div
+            key={label}
+            className={`${grad} rounded-xl border border-border/60 p-4 transition-transform duration-300 hover:-translate-y-0.5`}
+          >
+            <div className="mb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <Icon className={`h-3.5 w-3.5 ${iconColor}`} />
+                {label}
+              </span>
             </div>
             <p className="text-3xl font-semibold tabular-nums tracking-tight text-foreground">
               {value}
