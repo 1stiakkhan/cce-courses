@@ -25,7 +25,7 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
       <h2 className="mb-5 text-base font-semibold tracking-tight text-foreground">
         {semester.name} Overview
       </h2>
-      <div className="grid grid-cols-2 gap-y-6 divide-border sm:grid-cols-4 sm:divide-x">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
         {items.map(({ label, value, icon: Icon, grad, iconColor }) => (
           <div
             key={label}
