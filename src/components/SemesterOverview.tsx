@@ -14,10 +14,10 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
   const theoryCount = semester.courses.length - sessionalCount;
 
   const items = [
-    { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen },
-    { label: "Total Credits", value: `${stats.totalCredits}`, icon: Award },
-    { label: "Theory Courses", value: pad(theoryCount), icon: Library },
-    { label: "Sessional Courses", value: pad(sessionalCount), icon: FlaskConical },
+    { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen, grad: "stat-grad-purple", iconColor: "text-primary" },
+    { label: "Total Credits", value: `${stats.totalCredits}`, icon: Award, grad: "stat-grad-blue", iconColor: "text-[hsl(217_82%_56%)] dark:text-[hsl(217_80%_70%)]" },
+    { label: "Theory Courses", value: pad(theoryCount), icon: Library, grad: "stat-grad-blue", iconColor: "text-[hsl(217_82%_56%)] dark:text-[hsl(217_80%_70%)]" },
+    { label: "Sessional Courses", value: pad(sessionalCount), icon: FlaskConical, grad: "stat-grad-teal", iconColor: "text-accent" },
   ];
 
   return (
@@ -25,12 +25,17 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
       <h2 className="mb-5 text-base font-semibold tracking-tight text-foreground">
         {semester.name} Overview
       </h2>
-      <div className="grid grid-cols-2 gap-y-6 divide-border sm:grid-cols-4 sm:divide-x">
-        {items.map(({ label, value, icon: Icon }) => (
-          <div key={label} className="px-0 sm:px-6 sm:first:pl-0 sm:last:pr-0">
-            <div className="mb-1.5 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              <Icon className="h-3.5 w-3.5" />
-              {label}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        {items.map(({ label, value, icon: Icon, grad, iconColor }) => (
+          <div
+            key={label}
+            className={`${grad} rounded-xl border border-border/60 p-4 transition-transform duration-300 hover:-translate-y-0.5`}
+          >
+            <div className="mb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <Icon className={`h-3.5 w-3.5 ${iconColor}`} />
+                {label}
+              </span>
             </div>
             <p className="text-3xl font-semibold tabular-nums tracking-tight text-foreground">
               {value}

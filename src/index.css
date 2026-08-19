@@ -134,4 +134,25 @@
       transform: translateX(100%);
     }
   }
+
+  /* Stat card themed gradients */
+  .stat-grad-purple {
+    background-image: linear-gradient(135deg, hsl(262 60% 97%) 0%, hsl(262 50% 94%) 100%);
+  }
+  .stat-grad-blue {
+    background-image: linear-gradient(135deg, hsl(217 70% 97%) 0%, hsl(217 60% 94%) 100%);
+  }
+  .stat-grad-teal {
+    background-image: linear-gradient(135deg, hsl(172 60% 96%) 0%, hsl(172 55% 92%) 100%);
+  }
+
+  .dark .stat-grad-purple {
+    background-image: linear-gradient(135deg, hsl(262 45% 16%) 0%, hsl(262 40% 12%) 100%);
+  }
+  .dark .stat-grad-blue {
+    background-image: linear-gradient(135deg, hsl(217 50% 16%) 0%, hsl(217 45% 11%) 100%);
+  }
+  .dark .stat-grad-teal {
+    background-image: linear-gradient(135deg, hsl(172 45% 14%) 0%, hsl(172 40% 9%) 100%);
+  }
 }
