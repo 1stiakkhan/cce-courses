@@ -2,8 +2,11 @@ import { Course } from "@/data/syllabusData";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { isSessional } from "@/lib/courseUtils";
 import { cn } from "@/lib/utils";
+import { NotesPanel } from "@/components/notes/NotesPanel";
+import { ChapterNoteRow } from "@/components/notes/ChapterNoteRow";
 
 interface CourseDetailsDrawerProps {
   course: Course | null;
@@ -22,14 +25,17 @@ export const CourseDetailsDrawer = ({ course, open, onOpenChange }: CourseDetail
   if (!course) return null;
   const sessional = isSessional(course);
 
+  const indexedContent = course.content.map((item, index) => ({ item, index }));
   const contentBySection = (section: string) =>
-    course.content.filter((c) => c.section === section);
-  const unsectioned = course.content.filter((c) => c.section !== "Midterm" && c.section !== "Final");
+    indexedContent.filter(({ item }) => item.section === section);
+  const unsectioned = indexedContent.filter(
+    ({ item }) => item.section !== "Midterm" && item.section !== "Final"
+  );
 
-  const renderContent = (items: typeof course.content) => (
+  const renderContent = (items: typeof indexedContent) => (
     <div className="space-y-2">
-      {items.map((item, idx) => (
-        <div key={idx} className="rounded-lg border border-border bg-card p-3">
+      {items.map(({ item, index }) => (
+        <div key={index} className="rounded-lg border border-border bg-card p-3">
           <div className="mb-1 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
             <span className="font-medium text-foreground">{item.chapter}</span>
             {item.clo && (
@@ -40,10 +46,12 @@ export const CourseDetailsDrawer = ({ course, open, onOpenChange }: CourseDetail
             {item.lectures !== undefined && <span>{item.lectures} lectures</span>}
           </div>
           <p className="text-sm leading-relaxed text-foreground">{item.topic}</p>
+          <ChapterNoteRow courseId={course.id} index={index} />
         </div>
       ))}
     </div>
   );
+
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
