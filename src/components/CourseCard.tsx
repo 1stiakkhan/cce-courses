@@ -73,6 +73,24 @@ export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
           </div>
         </div>
 
+        {(itemCount > 0 || doneCount > 0) && (
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+            {itemCount > 0 && (
+              <span className="inline-flex items-center gap-1 text-primary">
+                <StickyNote className="h-3 w-3" />
+                {itemCount} {itemCount === 1 ? "note" : "notes"}
+              </span>
+            )}
+            {doneCount > 0 && (
+              <span className="inline-flex items-center gap-1 text-accent">
+                <CheckCircle2 className="h-3 w-3" />
+                {doneCount}/{chapterCount} chapters done
+              </span>
+            )}
+          </div>
+        )}
+
+
         <div className="flex items-center justify-between border-t border-border pt-3">
           <span className="text-xs text-muted-foreground">
             {course.outcomes.length} CLOs · {course.content.length} topics
