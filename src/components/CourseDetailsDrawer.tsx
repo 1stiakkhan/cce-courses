@@ -83,8 +83,20 @@ export const CourseDetailsDrawer = ({ course, open, onOpenChange }: CourseDetail
           </div>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-9.5rem)]">
-          <div className="space-y-8 p-6">
+        <Tabs defaultValue="syllabus" className="w-full">
+          <TabsList className="mx-6 mt-4 grid w-[calc(100%-3rem)] grid-cols-2">
+            <TabsTrigger value="syllabus" className="text-xs">
+              Syllabus
+            </TabsTrigger>
+            <TabsTrigger value="notes" className="text-xs">
+              My Notes
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="syllabus" className="mt-0">
+            <ScrollArea className="h-[calc(100vh-12.5rem)]">
+              <div className="space-y-8 p-6">
+
             {course.objectives.length > 0 && (
               <Section title="Course Objectives">
                 <ul className="space-y-2">
