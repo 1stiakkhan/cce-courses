@@ -210,8 +210,19 @@ export const CourseDetailsDrawer = ({ course, open, onOpenChange }: CourseDetail
                 </ul>
               </Section>
             )}
-          </div>
-        </ScrollArea>
+            </div>
+          </ScrollArea>
+          </TabsContent>
+
+          <TabsContent value="notes" className="mt-0">
+            <ScrollArea className="h-[calc(100vh-12.5rem)]">
+              <div className="p-6">
+                <NotesPanel course={course} />
+              </div>
+            </ScrollArea>
+          </TabsContent>
+        </Tabs>
+
       </SheetContent>
     </Sheet>
   );
