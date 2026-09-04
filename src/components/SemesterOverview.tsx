@@ -1,6 +1,9 @@
 import { BookOpen, Award, FlaskConical, Library } from "lucide-react";
 import { getSemesterStats, Semester } from "@/data/syllabusData";
 import { isSessional } from "@/lib/courseUtils";
+import { Progress } from "@/components/ui/progress";
+import { useNotesStore } from "@/hooks/useNotesStore";
+import { courseSummary } from "@/lib/notesStorage";
 
 interface SemesterOverviewProps {
   semester: Semester;
@@ -12,6 +15,18 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
   const stats = getSemesterStats(semester);
   const sessionalCount = semester.courses.filter(isSessional).length;
   const theoryCount = semester.courses.length - sessionalCount;
+  const { store } = useNotesStore();
+
+  const progressTotals = semester.courses.reduce(
+    (acc, course) => {
+      const { doneCount, chapterCount } = courseSummary(store, course.id, course.content.length);
+      return { done: acc.done + doneCount, total: acc.total + chapterCount };
+    },
+    { done: 0, total: 0 }
+  );
+  const progressPct = progressTotals.total
+    ? Math.round((progressTotals.done / progressTotals.total) * 100)
+    : 0;
 
   const items = [
     { label: "Courses", value: pad(stats.totalCourses), icon: BookOpen, grad: "stat-grad-purple", iconColor: "text-primary" },
@@ -43,6 +58,18 @@ export const SemesterOverview = ({ semester }: SemesterOverviewProps) => {
           </div>
         ))}
       </div>
+
+      {progressTotals.total > 0 && (
+        <div className="mt-5 rounded-xl border border-border/60 bg-muted/30 p-4">
+          <div className="mb-2 flex items-center justify-between text-xs">
+            <span className="font-medium text-foreground">Your study progress</span>
+            <span className="tabular-nums text-muted-foreground">
+              {progressTotals.done}/{progressTotals.total} chapters · {progressPct}%
+            </span>
+          </div>
+          <Progress value={progressPct} className="h-2" />
+        </div>
+      )}
     </section>
   );
 };

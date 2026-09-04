@@ -1,8 +1,10 @@
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, CheckCircle2, StickyNote } from "lucide-react";
 import { Course } from "@/data/syllabusData";
 import { Button } from "@/components/ui/button";
 import { isSessional } from "@/lib/courseUtils";
 import { cn } from "@/lib/utils";
+import { useNotesStore } from "@/hooks/useNotesStore";
+import { courseSummary } from "@/lib/notesStorage";
 
 interface CourseCardProps {
   course: Course;
@@ -11,6 +13,12 @@ interface CourseCardProps {
 
 export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
   const sessional = isSessional(course);
+  const { store } = useNotesStore();
+  const { itemCount, doneCount, chapterCount } = courseSummary(
+    store,
+    course.id,
+    course.content.length
+  );
 
   const marks = [
     { label: "Attendance", value: course.assessment.attendance },
@@ -18,6 +26,7 @@ export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
     { label: "Midterm", value: course.assessment.midterm },
     { label: "Final", value: course.assessment.final },
   ];
+
 
   return (
     <article className="flex h-full flex-col rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[var(--shadow-lift)]">
@@ -63,6 +72,24 @@ export const CourseCard = ({ course, onOpen }: CourseCardProps) => {
             ))}
           </div>
         </div>
+
+        {(itemCount > 0 || doneCount > 0) && (
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+            {itemCount > 0 && (
+              <span className="inline-flex items-center gap-1 text-primary">
+                <StickyNote className="h-3 w-3" />
+                {itemCount} {itemCount === 1 ? "note" : "notes"}
+              </span>
+            )}
+            {doneCount > 0 && (
+              <span className="inline-flex items-center gap-1 text-accent">
+                <CheckCircle2 className="h-3 w-3" />
+                {doneCount}/{chapterCount} chapters done
+              </span>
+            )}
+          </div>
+        )}
+
 
         <div className="flex items-center justify-between border-t border-border pt-3">
           <span className="text-xs text-muted-foreground">
